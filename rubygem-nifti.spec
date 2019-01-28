@@ -26,7 +26,6 @@ designed primarily for the storage and analysis of MRI & PET imaging data.
 
 %package doc
 Summary: Documentation for %{name}
-Group: Documentation
 Requires: %{name} = %{version}-%{release}
 BuildArch: noarch
 
