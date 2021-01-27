@@ -2,7 +2,7 @@
 
 Name:          rubygem-%{gem_name}
 Version:       0.0.2
-Release:       13%{?dist}
+Release:       14%{?dist}
 Summary:       A pure Ruby API to the NIfTI Neuroimaging Format
 License:       LGPLv3+
 URL:           https://github.com/brainmap/%{gem_name}
@@ -77,6 +77,9 @@ popd
 
 
 %changelog
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.2-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.2-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
