@@ -2,7 +2,7 @@
 
 Name:          rubygem-%{gem_name}
 Version:       0.0.2
-Release:       14%{?dist}
+Release:       15%{?dist}
 Summary:       A pure Ruby API to the NIfTI Neuroimaging Format
 License:       LGPLv3+
 URL:           https://github.com/brainmap/%{gem_name}
@@ -12,7 +12,7 @@ BuildRequires: ruby
 BuildRequires: ruby(release)
 BuildRequires: rubygems-devel
 BuildRequires: rubygem(cucumber)
-BuildRequires: rubygem(rspec2)
+BuildRequires: rubygem(rspec)
 BuildRequires: rubygem(mocha)
 BuildRequires: rubygem(narray)
 BuildRequires: rubygem(simplecov)
@@ -51,7 +51,10 @@ cp -a .%{gem_dir}/* \
 %check
 pushd .%{gem_instdir}
   sed -i "s/config.color_enabled =/config.color =/g" spec/spec_helper.rb
-  rspec2 -Ilib spec
+  # rspec 2 -> 3
+  grep -rl be_true spec | xargs sed -i -e 's|be_true|be_truthy|'
+  grep -rl be_false spec | xargs sed -i -e 's|be_false|be_falsey|'
+  rspec -Ilib spec
 popd
 
 %files
@@ -77,6 +80,9 @@ popd
 
 
 %changelog
+* Wed Apr  7 2021 Mamoru TASAKA <mtasaka@fedoraproject.org> - 0.0.2-15
+- Use rspec 3
+
 * Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.2-14
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
