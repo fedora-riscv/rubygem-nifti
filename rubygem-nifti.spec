@@ -2,7 +2,7 @@
 
 Name:          rubygem-%{gem_name}
 Version:       0.0.2
-Release:       16%{?dist}
+Release:       17%{?dist}
 Summary:       A pure Ruby API to the NIfTI Neuroimaging Format
 License:       LGPLv3+
 URL:           https://github.com/brainmap/%{gem_name}
@@ -55,6 +55,8 @@ pushd .%{gem_instdir}
   grep -rl be_true spec | xargs sed -i -e 's|be_true|be_truthy|'
   grep -rl be_false spec | xargs sed -i -e 's|be_false|be_falsey|'
   rspec -Ilib spec
+
+  ruby -Ilib -S cucumber
 popd
 
 %files
@@ -80,6 +82,9 @@ popd
 
 
 %changelog
+* Mon Jan 17 2022 Mamoru TASAKA <mtasaka@fedoraproject.org> - 0.0.2-17
+- Actually execute cucumber test
+
 * Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.0.2-16
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
